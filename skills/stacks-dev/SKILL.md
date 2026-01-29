@@ -409,6 +409,13 @@ Common commands:
 
 **Note:** Console is for manual exploration; tests use Vitest.
 
+### Package Installation
+
+Install Stacks.js packages for frontend:
+```bash
+npm install @stacks/connect @stacks/transactions @stacks/network
+```
+
 ### Steps
 
 1. **Connect Wallet**
@@ -417,11 +424,16 @@ Common commands:
 
 2. **Call Contract Functions**
    - Use `@stacks/transactions` for contract calls
+   - **Critical:** Add post-conditions for STX/token transfers
    - Handle transaction signing and results
 
 3. **Handle Errors**
    - Parse contract responses
    - Display user-friendly messages
+
+### Security Note
+
+Always use `PostConditionMode.Deny` for token transfers. Post-conditions abort transactions if unexpected asset transfers occur, protecting users from malicious contracts.
 
 **Reference:** For frontend patterns, see [references/clarity-frontend.md](references/clarity-frontend.md)
 
