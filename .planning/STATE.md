@@ -1,9 +1,9 @@
 # Project State: Stacks Skills Plugin
 
 **Last Updated:** 2026-01-29
-**Current Phase:** Phase 4 - TDD Workflow & Contract Implementation
-**Current Plan:** 04-03 completed - Phase 4 COMPLETE
-**Status:** Phase 4 complete - Ready for Phase 5
+**Current Phase:** Phase 5 - Clarinet CLI Integration
+**Current Plan:** 05-02 completed
+**Status:** In progress - CLI integration plan complete
 
 ## Project Reference
 
@@ -11,53 +11,47 @@
 Enable developers to build high-quality Clarity smart contracts through enforced TDD workflow and comprehensive testing (unit + fuzz), with seamless frontend integration.
 
 **Current Focus:**
-Phase 4 complete. SKILL.md Phases 2-4 enhanced with collaborative TDD workflow, best practices review, coverage display, and user override gates. Ready for Phase 5: Clarinet CLI Integration.
+Phase 5 in progress. SKILL.md updated with Clarinet CLI orchestration: project initialization detection, automatic validation after edits, devnet lifecycle, and deployment safety gates.
 
 **Approach:**
 Single-skill MVP - Build one comprehensive `stacks-dev` skill that handles the full workflow before considering multi-skill orchestration.
 
 ## Current Position
 
-**Phase:** 4 of 6 (TDD Workflow & Contract Implementation)
-**Plan:** 3 of 3 in phase (complete)
-**Status:** Phase 4 complete
-**Last activity:** 2026-01-29 - Completed 04-03-PLAN.md (Workflow Integration)
+**Phase:** 5 of 6 (Clarinet CLI Integration)
+**Plan:** 2 of 2 in phase
+**Status:** In progress
+**Last activity:** 2026-01-29 - Completed 05-02-PLAN.md (CLI Integration)
 
-**Progress:** [███████████████░░░░░] 75% (9/12 total plans across all phases)
+**Progress:** [████████████████░░░░] 83% (10/12 total plans across all phases)
 
-### Phase 4 Goals
+### Phase 5 Goals
 
-Enforce tests-first workflow with Clarinet SDK unit tests and contract implementation. Users write tests before implementing Clarity contracts. A 90% coverage gate prevents progression to frontend integration.
+Integrate Clarinet CLI commands throughout the development workflow. Project initialization, automatic validation, devnet management, and deployment safety gates.
 
 **Success Criteria:**
-1. [x] TDD-01: Collaborative test scenario approval workflow
-2. [x] TDD-02: Soft TDD enforcement with tracking display
-3. [x] TDD-03: Vitest + Clarinet SDK configuration with 90% thresholds
-4. [x] CONT-02: Coding style patterns (sequential asserts, explicit errors)
-5. [x] CONT-03: Storage optimization patterns (hash storage, minimize on-chain)
-6. [x] CONT-04: Upgradability patterns (dynamic principals, trait dispatch)
-7. [x] TDD-04: SKILL.md Phase 2 implementation (test writing)
-8. [x] TDD-05: Contract implementation with best practice checks
-9. [x] TDD-06: Coverage gate enforcement
+1. [x] CLAR-01: Project setup with clarinet new/contract new (Phase 1)
+2. [x] CLAR-02: clarinet check after modifications (Phase 2-3)
+3. [x] CLAR-03: Console commands for interactive testing (Phase 5)
+4. [x] CLAR-04: Devnet workflow with health check (Phase 5)
+5. [x] CLAR-05: Deployment with tiered safety (Phase 5)
 
-**Requirements Coverage:** 9/9 requirements implemented (100%)
-- TDD-01, TDD-02, TDD-03 (04-01 complete)
-- CONT-02, CONT-03, CONT-04 (04-02 complete)
-- TDD-04, TDD-05, TDD-06 (04-03 complete)
+**Requirements Coverage:** 5/5 requirements implemented (100%)
+- CLAR-01, CLAR-02, CLAR-03, CLAR-04, CLAR-05 (05-02 complete)
 
 ## Performance Metrics
 
 **Overall Progress:**
-- Requirements completed: 32/39 (82%)
+- Requirements completed: 37/39 (95%)
 - Phases completed: 4/6 (67%)
-- Plans executed: 9
+- Plans executed: 10
 
 **Current Phase:**
-- Phase 4 requirements: 9/9 (100%)
-- Phase 4 plans: 3/3 (100%)
+- Phase 5 requirements: 5/5 (100%)
+- Phase 5 plans: 2/2 (100%)
 
 **Velocity:**
-- Plans completed per session: 9
+- Plans completed per session: 10
 - Average plan duration: 3 min
 
 ## Accumulated Context
@@ -92,6 +86,9 @@ Enforce tests-first workflow with Clarinet SDK unit tests and contract implement
 | TDD Status tracking across phases | Display [✓ followed \| ⚠ skipped] in Phase 2-4 headers for workflow transparency | 2026-01-29 | 04-03 |
 | Coverage gate user override | Allow "proceed anyway" below 90% coverage with no justification required; 95% threshold when TDD skipped | 2026-01-29 | 04-03 |
 | SKILL.md exceeds 500 lines (523) | Comprehensive Phase 4 content requires additional lines; trade-off accepted for complete guidance | 2026-01-29 | 04-03 |
+| Concise CLI additions | Keep total CLI additions to ~60 lines to stay under 600-line limit (final: 583 lines) | 2026-01-29 | 05-02 |
+| Devnet auto-deploy | No confirmation needed for devnet since it's local testing | 2026-01-29 | 05-02 |
+| Console as exploration | Document console commands for manual testing, not automated workflows | 2026-01-29 | 05-02 |
 
 ### Cross-Phase Context
 
@@ -108,6 +105,7 @@ Enforce tests-first workflow with Clarinet SDK unit tests and contract implement
 - Quality gate at Phase 4: 90%+ coverage required before frontend integration
 - Reference files: clarity-design.md, clarity-tdd.md, clarity-implementation.md, clarity-cli.md, clarity-frontend.md
 - SKILL.md uses Phase X/5 progress format with explicit gates
+- SKILL.md now at 583 lines with CLI integration (under 600-line limit)
 
 **Technology Stack:**
 - Claude Code plugin system (Agent Skills spec + Claude extensions)
@@ -151,8 +149,13 @@ Enforce tests-first workflow with Clarinet SDK unit tests and contract implement
 - [x] Update SKILL.md Phases 2-3 with collaborative workflow and best practices (04-03 Task 1)
 - [x] Update SKILL.md Phase 4 with coverage workflow and TDD tracking (04-03 Task 2)
 
+**Completed (Phase 5):**
+- [x] Enhance clarity-cli.md with CLI command reference (05-01 Task 1)
+- [x] Add project initialization to SKILL.md Phase 1 (05-02 Task 1)
+- [x] Add automatic validation to SKILL.md Phases 2-3 (05-02 Task 2)
+- [x] Add devnet workflow and deployment safety to SKILL.md Phase 5 (05-02 Task 3)
+
 **Future Phases:**
-- [ ] Clarinet CLI integration (Phase 5)
 - [ ] Frontend integration patterns (Phase 6)
 
 ### Known Blockers
@@ -167,14 +170,14 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 21:31:44 UTC
-**Stopped at:** Completed 04-03-PLAN.md - Phase 4 complete
+**Last session:** 2026-01-29 21:57:01 UTC
+**Stopped at:** Completed 05-02-PLAN.md - Phase 5 plan 2 complete
 **Resume file:** None
 
 **To Resume Work:**
 1. Read this STATE.md for current position
-2. Phase 4 complete - all 3 plans executed
-3. Next: Begin Phase 5 (Clarinet CLI Integration)
+2. Phase 5 plan 2 complete - CLI integration done
+3. Next: Continue Phase 5 or begin Phase 6 (Frontend Integration)
 
 **If Context is Lost:**
 - Core context preserved in: PROJECT.md, REQUIREMENTS.md, ROADMAP.md, STATE.md
@@ -191,4 +194,4 @@ cat .planning/ROADMAP.md | grep "Status"
 
 *State initialized: 2026-01-29*
 *Last updated: 2026-01-29*
-*Next action: Begin Phase 5 planning (Clarinet CLI Integration)*
+*Next action: Continue Phase 5 or begin Phase 6 planning (Frontend Integration)*
