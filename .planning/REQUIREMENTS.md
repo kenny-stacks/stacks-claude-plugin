@@ -55,11 +55,11 @@ Requirements for initial release. Single `stacks-dev` skill covering full workfl
 
 ### Clarinet CLI
 
-- [ ] **CLAR-01**: Skill guides project setup with `clarinet new` and `clarinet contracts new`
-- [ ] **CLAR-02**: Skill uses `clarinet check` for syntax and type validation
-- [ ] **CLAR-03**: Skill guides interactive testing with `clarinet console`
-- [ ] **CLAR-04**: Skill guides local development with `clarinet devnet start`
-- [ ] **CLAR-05**: Skill guides deployment with `clarinet deployments generate` and `clarinet deployments apply`
+- [x] **CLAR-01**: Skill guides project setup with `clarinet new` and `clarinet contracts new`
+- [x] **CLAR-02**: Skill uses `clarinet check` for syntax and type validation
+- [x] **CLAR-03**: Skill guides interactive testing with `clarinet console`
+- [x] **CLAR-04**: Skill guides local development with `clarinet devnet start`
+- [x] **CLAR-05**: Skill guides deployment with `clarinet deployments generate` and `clarinet deployments apply`
 
 ### Frontend Integration
 
@@ -146,11 +146,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-02 | Phase 4 | Complete |
 | CONT-03 | Phase 4 | Complete |
 | CONT-04 | Phase 4 | Complete |
-| CLAR-01 | Phase 5 | Pending |
-| CLAR-02 | Phase 5 | Pending |
-| CLAR-03 | Phase 5 | Pending |
-| CLAR-04 | Phase 5 | Pending |
-| CLAR-05 | Phase 5 | Pending |
+| CLAR-01 | Phase 5 | Complete |
+| CLAR-02 | Phase 5 | Complete |
+| CLAR-03 | Phase 5 | Complete |
+| CLAR-04 | Phase 5 | Complete |
+| CLAR-05 | Phase 5 | Complete |
 | FRNT-01 | Phase 6 | Pending |
 | FRNT-02 | Phase 6 | Pending |
 | FRNT-03 | Phase 6 | Pending |
@@ -163,4 +163,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-29*
-*Last updated: 2026-01-29 after Phase 4 completion*
+*Last updated: 2026-01-29 after Phase 5 completion*

@@ -145,8 +145,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 05-01-PLAN.md - Enhance clarity-cli.md with CLI orchestration (command automation, error handling, devnet lifecycle, deployment safety)
-- [ ] 05-02-PLAN.md - Update SKILL.md phases with CLI integration (project init, auto-validation, devnet workflow, deployment gates)
+- [x] 05-01-PLAN.md - Enhance clarity-cli.md with CLI orchestration (command automation, error handling, devnet lifecycle, deployment safety)
+- [x] 05-02-PLAN.md - Update SKILL.md phases with CLI integration (project init, auto-validation, devnet workflow, deployment gates)
 
 **Requirements:**
 - CLAR-01: Skill guides project setup with `clarinet new` and `clarinet contracts new`
@@ -193,7 +193,7 @@ Plans:
 | 2 - Core Skill Structure | ✓ Complete | 8 | 8/8 |
 | 3 - Design & Planning Phase | ✓ Complete | 4 | 4/4 |
 | 4 - TDD Workflow & Contract Implementation | ✓ Complete | 8 | 8/8 |
-| 5 - Clarinet CLI Integration | Pending | 5 | 0/5 |
+| 5 - Clarinet CLI Integration | ✓ Complete | 5 | 5/5 |
 | 6 - Frontend Integration | Pending | 4 | 0/4 |
 
 **Total Coverage:** 39/39 requirements mapped (100%)
@@ -215,4 +215,4 @@ If the single skill proves insufficient (context window issues, exceeds 500 line
 
 ---
 
-*Last updated: 2026-01-29 (Phase 4 complete)*
+*Last updated: 2026-01-29 (Phase 5 complete)*
