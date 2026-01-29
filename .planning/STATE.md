@@ -1,9 +1,9 @@
 # Project State: Stacks Skills Plugin
 
 **Last Updated:** 2026-01-29
-**Current Phase:** Phase 3 - Design Planning Phase (COMPLETE)
-**Current Plan:** 03-01 completed, Phase 3 COMPLETE
-**Status:** Phase 3 complete - Ready for Phase 4
+**Current Phase:** Phase 4 - TDD Workflow & Contract Implementation
+**Current Plan:** 04-02 completed
+**Status:** In progress
 
 ## Project Reference
 
@@ -11,47 +11,50 @@
 Enable developers to build high-quality Clarity smart contracts through enforced TDD workflow and comprehensive testing (unit + fuzz), with seamless frontend integration.
 
 **Current Focus:**
-Phase 3 complete. Design phase reference enhanced with comprehensive guidance (design document template, best practices checklist, modular architecture). Ready for Phase 4: TDD Workflow & Contract Implementation.
+Phase 4 in progress. Implementation reference (clarity-implementation.md) created with coding style patterns, storage optimization, upgradability patterns, and auto-fix guidance for SKILL.md Phase 3.
 
 **Approach:**
 Single-skill MVP - Build one comprehensive `stacks-dev` skill that handles the full workflow before considering multi-skill orchestration.
 
 ## Current Position
 
-**Phase:** 3 of 6 (Design Planning Phase) - COMPLETE
-**Plan:** 1 of 1 in phase (complete)
-**Status:** Phase complete
-**Last activity:** 2026-01-29 - Completed 03-01-PLAN.md (Design Phase Reference Enhancement)
+**Phase:** 4 of 6 (TDD Workflow & Contract Implementation)
+**Plan:** 1 of 3 in phase (complete)
+**Status:** In progress
+**Last activity:** 2026-01-29 - Completed 04-01-PLAN.md (TDD Reference Enhancement)
 
-**Progress:** [████████████████████] 100% (6/6 total plans in Phases 1-3)
+**Progress:** [█████████████░░░░░░░] 58% (7/12 total plans across all phases)
 
-### Phase 3 Goals - ACHIEVED
+### Phase 4 Goals
 
-Enhance the design phase guidance to help users create comprehensive design documents before implementation.
+Enforce tests-first workflow with Clarinet SDK unit tests and contract implementation. Users write tests before implementing Clarity contracts. A 90% coverage gate prevents progression to frontend integration.
 
 **Success Criteria:**
-1. [x] DSGN-01: Pseudo code guidance in design template
-2. [x] DSGN-02: Best practices checklist from Clarity Book Ch13
-3. [x] DSGN-03: Modular architecture guidance with ExecutorDAO pattern
-4. [x] DSGN-04: Links to authoritative sources (not embedded content)
+1. [x] TDD-01: Collaborative test scenario approval workflow
+2. [x] TDD-02: Soft TDD enforcement with tracking display
+3. [x] TDD-03: Vitest + Clarinet SDK configuration with 90% thresholds
+4. [ ] TDD-04: SKILL.md Phase 2 implementation (test writing)
+5. [ ] TDD-05: Contract implementation with best practice checks
+6. [ ] TDD-06: Coverage gate enforcement
 
-**Requirements Coverage:** 4 requirements - ALL IMPLEMENTED
-- DSGN-01, DSGN-02, DSGN-03, DSGN-04
+**Requirements Coverage:** 3/6 requirements implemented
+- TDD-01, TDD-02, TDD-03 (04-01 complete)
+- TDD-04, TDD-05, TDD-06 (pending)
 
 ## Performance Metrics
 
 **Overall Progress:**
-- Requirements completed: 23/39 (59%)
+- Requirements completed: 26/39 (67%)
 - Phases completed: 3/6 (50%)
-- Plans executed: 6
+- Plans executed: 7
 
 **Current Phase:**
-- Phase 3 requirements: 4/4 (100%) - Complete
-- Phase 3 plans: 1/1 (100%) - Complete
+- Phase 4 requirements: 3/6 (50%)
+- Phase 4 plans: 1/3 (33%)
 
 **Velocity:**
-- Plans completed per session: 6
-- Average plan duration: 2 min
+- Plans completed per session: 7
+- Average plan duration: 3 min
 
 ## Accumulated Context
 
@@ -76,6 +79,9 @@ Enhance the design phase guidance to help users create comprehensive design docu
 | Verification-only final plan | All artifacts created in 02-01 and 02-02; final plan validates completeness | 2026-01-29 | 02-03 |
 | Human checkpoint for auto-invocation | Plugin loading behavior cannot be tested via automation | 2026-01-29 | 02-03 |
 | Link to authoritative sources | Avoids content duplication, keeps references current with official docs | 2026-01-29 | 03-01 |
+| Use vitest run --coverage | Clarinet SDK uses Vitest natively; clarinet test --coverage is deprecated | 2026-01-29 | 04-01 |
+| Batch test writing after approval | Collaborative workflow: approve all scenarios first, then implement (not incremental) | 2026-01-29 | 04-01 |
+| Soft TDD tracking format | Display "TDD: ✓ followed" or "TDD: ⚠ skipped" without blocking user | 2026-01-29 | 04-01 |
 
 ### Cross-Phase Context
 
@@ -129,8 +135,15 @@ Enhance the design phase guidance to help users create comprehensive design docu
 - [x] Add modular architecture guidance with ExecutorDAO pattern (03-01 Task 1)
 - [x] Add external reference links to authoritative sources (03-01 Task 1)
 
+**Completed (Phase 4):**
+- [x] Expand clarity-tdd.md with collaborative TDD workflow (04-01 Task 1)
+
+**In Progress (Phase 4):**
+- [ ] Implement SKILL.md Phase 2 (Test Writing)
+- [ ] Implement SKILL.md Phase 3 (Contract Implementation)
+- [ ] Add coverage gate enforcement
+
 **Future Phases:**
-- [ ] TDD workflow enforcement (Phase 4)
 - [ ] Clarinet CLI integration (Phase 5)
 - [ ] Frontend integration patterns (Phase 6)
 
@@ -140,24 +153,20 @@ None currently.
 
 ### Research Needed
 
-**Before Phase 4:**
-- Research Clarinet SDK test patterns and APIs
-- Understand coverage tool usage (`clarinet test --coverage`)
-
 **Before Phase 6:**
 - Research Stacks.js wallet integration patterns
 - Understand contract call patterns with @stacks/transactions
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 20:22:15 UTC
-**Stopped at:** Completed 03-01-PLAN.md
+**Last session:** 2026-01-29 19:04:17 UTC
+**Stopped at:** Completed 04-01-PLAN.md
 **Resume file:** None
 
 **To Resume Work:**
 1. Read this STATE.md for current position
-2. Phase 3 complete (if only 1 plan) - proceed to Phase 4
-3. Review 04-CONTEXT.md if it exists, or gather context for Phase 4
+2. Phase 4 in progress - 1 of 3 plans complete
+3. Next: Execute 04-02-PLAN.md (SKILL.md Phase 2 implementation)
 
 **If Context is Lost:**
 - Core context preserved in: PROJECT.md, REQUIREMENTS.md, ROADMAP.md, STATE.md
@@ -174,4 +183,4 @@ cat .planning/ROADMAP.md | grep "Status"
 
 *State initialized: 2026-01-29*
 *Last updated: 2026-01-29*
-*Next action: Begin Phase 4 planning (TDD Workflow Enforcement)*
+*Next action: Execute 04-02-PLAN.md (SKILL.md Phase 2: Test Writing)*
