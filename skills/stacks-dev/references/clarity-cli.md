@@ -187,6 +187,76 @@ actions:
 | `--coverage` | Generate coverage report |
 | `--watch` | Re-run on file changes |
 
+## Command Automation
+
+When executing Clarinet commands, the skill applies different automation levels based on command impact.
+
+### Auto-Execute Commands
+
+These commands run without confirmation (safe, reversible, or local-only):
+
+| Command | When to Auto-Run | Notes |
+|---------|------------------|-------|
+| `clarinet check` | After every contract edit | Always safe, just validates |
+| `clarinet test` | When running test suites | Local execution only |
+| `clarinet contract new <name>` | Adding contracts | Creates files, confirm creation in response |
+| `clarinet deployments generate --devnet` | Preparing devnet deployment | Just creates plan file |
+| `clarinet deployments apply --devnet` | Deploying to local devnet | Local network, easily reset |
+
+### Confirmation Required
+
+These commands require explicit user confirmation:
+
+| Command | Reason | Confirmation Pattern |
+|---------|--------|---------------------|
+| `clarinet new <name>` | May overwrite existing project | Check for Clarinet.toml first, warn if exists |
+| `clarinet devnet start` | Long-running process, needs dedicated terminal | Suggest opening in separate terminal |
+| `clarinet deployments apply --testnet` | Costs real testnet tokens | Show plan summary, request confirmation |
+| `clarinet deployments apply --mainnet` | Costs real STX | Show plan summary, explicit "deploy to mainnet" confirmation |
+| Network tier escalation | Moving from devnet to testnet/mainnet | Always confirm tier change |
+
+### Pre-Command Detection
+
+Before executing commands, check prerequisites:
+
+```bash
+# Check for existing project (before clarinet new)
+if [ -f "Clarinet.toml" ]; then
+  echo "WARNING: Clarinet.toml already exists"
+fi
+
+# Check for Clarinet installation (before any command)
+if ! command -v clarinet &> /dev/null; then
+  echo "Clarinet not found. Install: brew install clarinet"
+fi
+
+# Check for Docker (before devnet commands)
+if ! docker info &> /dev/null; then
+  echo "Docker not running. Start Docker Desktop first."
+fi
+```
+
+### Decision Tree
+
+```
+User requests CLI operation
+    |
+    ├── Is it a read/check operation?
+    │   └── YES → Auto-execute (clarinet check, clarinet test)
+    |
+    ├── Is it creating local files?
+    │   ├── New contract → Auto-execute, confirm creation
+    │   └── New project → Check for existing, warn if overwrite
+    |
+    ├── Is it a deployment?
+    │   ├── Devnet → Auto-execute (local network)
+    │   ├── Testnet → Show plan, request confirmation
+    │   └── Mainnet → Show plan, explicit confirmation required
+    |
+    └── Is it starting a service?
+        └── Devnet start → Suggest dedicated terminal, don't auto-background
+```
+
 ## External References
 
 ### Clarinet Documentation
