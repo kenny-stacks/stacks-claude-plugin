@@ -34,10 +34,10 @@ Requirements for initial release. Single `stacks-dev` skill covering full workfl
 
 ### Design Phase
 
-- [ ] **DSGN-01**: Skill guides user to write pseudo code before implementation
-- [ ] **DSGN-02**: Skill reviews designs against Clarity Book best practices (coding style, storage, upgradability)
-- [ ] **DSGN-03**: Skill recommends modular contract architecture for upgradability
-- [ ] **DSGN-04**: Skill references authoritative sources (Clarity Book, Stacks docs) not embedded docs
+- [x] **DSGN-01**: Skill guides user to write pseudo code before implementation
+- [x] **DSGN-02**: Skill reviews designs against Clarity Book best practices (coding style, storage, upgradability)
+- [x] **DSGN-03**: Skill recommends modular contract architecture for upgradability
+- [x] **DSGN-04**: Skill references authoritative sources (Clarity Book, Stacks docs) not embedded docs
 
 ### TDD Workflow
 
@@ -134,10 +134,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QUAL-01 | Phase 2 | Complete |
 | QUAL-02 | Phase 2 | Complete |
 | QUAL-03 | Phase 2 | Complete |
-| DSGN-01 | Phase 3 | Pending |
-| DSGN-02 | Phase 3 | Pending |
-| DSGN-03 | Phase 3 | Pending |
-| DSGN-04 | Phase 3 | Pending |
+| DSGN-01 | Phase 3 | Complete |
+| DSGN-02 | Phase 3 | Complete |
+| DSGN-03 | Phase 3 | Complete |
+| DSGN-04 | Phase 3 | Complete |
 | TEST-01 | Phase 4 | Pending |
 | TEST-02 | Phase 4 | Pending |
 | TEST-03 | Phase 4 | Pending |
@@ -163,4 +163,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-29*
-*Last updated: 2026-01-29 after Phase 2 completion*
+*Last updated: 2026-01-29 after Phase 3 completion*
