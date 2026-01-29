@@ -19,11 +19,11 @@ Single-skill MVP - Build one comprehensive `stacks-dev` skill that handles the f
 ## Current Position
 
 **Phase:** 4 of 6 (TDD Workflow & Contract Implementation)
-**Plan:** 1 of 3 in phase (complete)
+**Plan:** 2 of 3 in phase (complete)
 **Status:** In progress
-**Last activity:** 2026-01-29 - Completed 04-01-PLAN.md (TDD Reference Enhancement)
+**Last activity:** 2026-01-29 - Completed 04-02-PLAN.md (Implementation Reference Creation)
 
-**Progress:** [█████████████░░░░░░░] 58% (7/12 total plans across all phases)
+**Progress:** [██████████████░░░░░░] 67% (8/12 total plans across all phases)
 
 ### Phase 4 Goals
 
@@ -33,27 +33,31 @@ Enforce tests-first workflow with Clarinet SDK unit tests and contract implement
 1. [x] TDD-01: Collaborative test scenario approval workflow
 2. [x] TDD-02: Soft TDD enforcement with tracking display
 3. [x] TDD-03: Vitest + Clarinet SDK configuration with 90% thresholds
-4. [ ] TDD-04: SKILL.md Phase 2 implementation (test writing)
-5. [ ] TDD-05: Contract implementation with best practice checks
-6. [ ] TDD-06: Coverage gate enforcement
+4. [x] CONT-02: Coding style patterns (sequential asserts, explicit errors)
+5. [x] CONT-03: Storage optimization patterns (hash storage, minimize on-chain)
+6. [x] CONT-04: Upgradability patterns (dynamic principals, trait dispatch)
+7. [ ] TDD-04: SKILL.md Phase 2 implementation (test writing)
+8. [ ] TDD-05: Contract implementation with best practice checks
+9. [ ] TDD-06: Coverage gate enforcement
 
-**Requirements Coverage:** 3/6 requirements implemented
+**Requirements Coverage:** 6/9 requirements implemented
 - TDD-01, TDD-02, TDD-03 (04-01 complete)
+- CONT-02, CONT-03, CONT-04 (04-02 complete)
 - TDD-04, TDD-05, TDD-06 (pending)
 
 ## Performance Metrics
 
 **Overall Progress:**
-- Requirements completed: 26/39 (67%)
+- Requirements completed: 29/39 (74%)
 - Phases completed: 3/6 (50%)
-- Plans executed: 7
+- Plans executed: 8
 
 **Current Phase:**
-- Phase 4 requirements: 3/6 (50%)
-- Phase 4 plans: 1/3 (33%)
+- Phase 4 requirements: 6/9 (67%)
+- Phase 4 plans: 2/3 (67%)
 
 **Velocity:**
-- Plans completed per session: 7
+- Plans completed per session: 8
 - Average plan duration: 3 min
 
 ## Accumulated Context
@@ -82,6 +86,8 @@ Enforce tests-first workflow with Clarinet SDK unit tests and contract implement
 | Use vitest run --coverage | Clarinet SDK uses Vitest natively; clarinet test --coverage is deprecated | 2026-01-29 | 04-01 |
 | Batch test writing after approval | Collaborative workflow: approve all scenarios first, then implement (not incremental) | 2026-01-29 | 04-01 |
 | Soft TDD tracking format | Display "TDD: ✓ followed" or "TDD: ⚠ skipped" without blocking user | 2026-01-29 | 04-01 |
+| Auto-fix mechanical changes only | Sequential asserts, unnecessary begin removal, unwrap-panic replacement auto-fixed; structural changes require user confirmation | 2026-01-29 | 04-02 |
+| Implementation reference separate from design | clarity-implementation.md focuses on coding patterns; clarity-design.md focuses on architecture | 2026-01-29 | 04-02 |
 
 ### Cross-Phase Context
 
@@ -96,7 +102,7 @@ Enforce tests-first workflow with Clarinet SDK unit tests and contract implement
 - Single `stacks-dev` skill handles: design -> test -> implement -> verify -> frontend
 - Supporting files in references/ subdirectory for progressive disclosure
 - Quality gate at Phase 4: 90%+ coverage required before frontend integration
-- Reference files: clarity-design.md, clarity-tdd.md, clarity-cli.md, clarity-frontend.md
+- Reference files: clarity-design.md, clarity-tdd.md, clarity-implementation.md, clarity-cli.md, clarity-frontend.md
 - SKILL.md uses Phase X/5 progress format with explicit gates
 
 **Technology Stack:**
@@ -137,11 +143,12 @@ Enforce tests-first workflow with Clarinet SDK unit tests and contract implement
 
 **Completed (Phase 4):**
 - [x] Expand clarity-tdd.md with collaborative TDD workflow (04-01 Task 1)
+- [x] Create clarity-implementation.md reference file (04-02 Task 1)
 
 **In Progress (Phase 4):**
-- [ ] Implement SKILL.md Phase 2 (Test Writing)
-- [ ] Implement SKILL.md Phase 3 (Contract Implementation)
+- [ ] Implement SKILL.md Phase 2 (Test Writing) and Phase 3 (Contract Implementation)
 - [ ] Add coverage gate enforcement
+- [ ] Link new references from SKILL.md
 
 **Future Phases:**
 - [ ] Clarinet CLI integration (Phase 5)
@@ -159,8 +166,8 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 19:04:17 UTC
-**Stopped at:** Completed 04-01-PLAN.md
+**Last session:** 2026-01-29 21:05:00 UTC
+**Stopped at:** Completed 04-02-PLAN.md
 **Resume file:** None
 
 **To Resume Work:**
