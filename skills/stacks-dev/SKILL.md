@@ -150,8 +150,10 @@ Review and approve the scenarios. After approval, I'll write all test code in ba
 1. **Create Contract Scaffold**
    ```bash
    clarinet contract new my-contract
+   clarinet check  # Verify scaffold is valid
    ```
    Creates: `contracts/my-contract.clar` and `tests/my-contract.test.ts`
+   I'll automatically run `clarinet check` to confirm both files created and syntax valid.
 
 2. **I Propose Test Scenarios**
    Based on the design doc, I'll suggest test scenarios for each function
@@ -252,7 +254,17 @@ After each function, I'll review for Clarity best practices:
 I'll auto-fix mechanical violations (unnecessary begin, unwrap-panic) and explain what changed.
 For structural changes (nested if → asserts), I'll ask first.
 
-After implementation, I'll run `clarinet check` to verify syntax and type correctness.
+### Automatic Validation
+
+After each contract edit, I run `clarinet check` automatically:
+
+1. **Pass:** Continue to tests
+2. **Fail:** Parse errors, attempt auto-fix (up to 3x), then escalate
+
+Common auto-fixes: unnecessary `begin` removal, `unwrap-panic` replacement with `unwrap!`.
+Complex errors (type mismatches, missing functions) require your guidance.
+
+**Reference:** For error patterns, see [references/clarity-cli.md](references/clarity-cli.md)
 
 ### Verification (Automatic)
 
