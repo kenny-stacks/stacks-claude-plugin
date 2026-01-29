@@ -1,9 +1,9 @@
 # Project State: Stacks Skills Plugin
 
 **Last Updated:** 2026-01-29
-**Current Phase:** Phase 1 - Complete, Phase 2 next
-**Current Plan:** All Phase 1 plans complete
-**Status:** Phase 1 verified and approved
+**Current Phase:** Phase 2 - Core Skill Structure (in progress)
+**Current Plan:** 02-01 completed, 02-02 next
+**Status:** Plan 02-01 complete
 
 ## Project Reference
 
@@ -11,49 +11,49 @@
 Enable developers to build high-quality Clarity smart contracts through enforced TDD workflow and comprehensive testing (unit + fuzz), with seamless frontend integration.
 
 **Current Focus:**
-Phase 1 complete. Ready for Phase 2: Core Skill Structure.
+Phase 2 in progress. Reference files created, SKILL.md workflow orchestration next.
 
 **Approach:**
 Single-skill MVP - Build one comprehensive `stacks-dev` skill that handles the full workflow before considering multi-skill orchestration.
 
 ## Current Position
 
-**Phase:** 1 of 6 (Plugin Foundation & Compliance)
-**Plan:** 2 of 2 in phase (01-02 completed)
-**Status:** Phase complete
-**Last activity:** 2026-01-29 - Completed 01-02-PLAN.md
+**Phase:** 2 of 6 (Core Skill Structure)
+**Plan:** 1 of 2 in phase (02-01 completed)
+**Status:** In progress
+**Last activity:** 2026-01-29 - Completed 02-01-PLAN.md
 
-**Progress:** [██████████░░░░░░░░░░] 50% (2/2 plans in phase)
+**Progress:** [████████████░░░░░░░░] 60% (3/5 total plans)
 
-### Phase 1 Goals
+### Phase 2 Goals
 
-Create valid, installable plugin structure that passes all Agent Skills spec validations.
+Implement the single comprehensive `stacks-dev` skill with progressive disclosure and workflow orchestration.
 
 **Success Criteria:**
-1. Plugin directory structure exists with .claude-plugin/plugin.json and skills/stacks-dev/SKILL.md
-2. `claude plugins add /path/to/stacks-skills` successfully installs plugin
-3. `skills-ref validate ./skills/stacks-dev` passes all validation checks
-4. Skill appears in `/help` menu and auto-loads when user mentions "Stacks" or "Clarity"
-5. Skill YAML frontmatter contains all required fields (name, description, license, metadata, allowed-tools)
+1. Reference files exist for each workflow phase (clarity-design, clarity-tdd, clarity-cli, clarity-frontend)
+2. SKILL.md contains 5-phase workflow orchestration under 500 lines
+3. Each phase has explicit verification steps
+4. Phase transitions have gates (user confirmation or verification pass)
+5. Reference files are linked from appropriate phases in SKILL.md
 
-**Requirements Coverage:** 11 requirements
-- PLUG-01, PLUG-02, PLUG-03
-- SPEC-01, SPEC-02, SPEC-03, SPEC-04, SPEC-05, SPEC-06, SPEC-07, SPEC-08
+**Requirements Coverage:** 8 requirements
+- FLOW-01, FLOW-02, FLOW-03, FLOW-04, FLOW-05
+- PROG-01, PROG-02, PROG-03
 
 ## Performance Metrics
 
 **Overall Progress:**
 - Requirements completed: 11/39 (28%)
 - Phases completed: 1/6 (17%)
-- Plans executed: 2
+- Plans executed: 3
 
 **Current Phase:**
-- Phase 1 requirements: 11/11 (100%) - All complete
-- Phase 2 ready to begin
+- Phase 2 requirements: 0/8 (0%) - In progress
+- Phase 2 plans: 1/2 (50%) - 02-01 complete
 
 **Velocity:**
-- Plans completed per session: 2
-- Average plan duration: 2 min
+- Plans completed per session: 3
+- Average plan duration: 3 min
 
 ## Accumulated Context
 
@@ -69,6 +69,9 @@ Create valid, installable plugin structure that passes all Agent Skills spec val
 | Full tool access in frontmatter | Granted all standard tools (Read, Write, Edit, Bash, Grep, Glob) to support complete Stacks development workflow | 2026-01-29 | 01-01 |
 | skills-ref installation via npm | skills-ref is an npm package (not Python pip); installed globally for validation | 2026-01-29 | 01-02 |
 | Manual verification documentation | Documented manual testing steps in TESTING.md instead of full automation (requires interactive Claude Code session) | 2026-01-29 | 01-02 |
+| One reference file per workflow phase | Aligns with progressive disclosure; load only relevant domain when entering phase | 2026-01-29 | 02-01 |
+| Keep reference files under 200 lines | Supports Claude's partial loading; keeps content actionable | 2026-01-29 | 02-01 |
+| Link to external docs not embed | Avoids duplication; stays current with authoritative sources | 2026-01-29 | 02-01 |
 
 ### Cross-Phase Context
 
@@ -80,9 +83,10 @@ Create valid, installable plugin structure that passes all Agent Skills spec val
 - Reference authoritative sources (Clarity Book, Stacks docs) rather than embedding docs
 
 **Architecture Notes:**
-- Single `stacks-dev` skill handles: design → test → implement → deploy → frontend
+- Single `stacks-dev` skill handles: design -> test -> implement -> verify -> frontend
 - Supporting files in references/ subdirectory for progressive disclosure
 - Quality gate at Phase 4: 90%+ coverage required before frontend integration
+- Reference files: clarity-design.md, clarity-tdd.md, clarity-cli.md, clarity-frontend.md
 
 **Technology Stack:**
 - Claude Code plugin system (Agent Skills spec + Claude extensions)
@@ -93,19 +97,24 @@ Create valid, installable plugin structure that passes all Agent Skills spec val
 
 ### Active TODOs
 
-**Immediate (Phase 1):**
+**Completed (Phase 1):**
 - [x] Create plugin.json manifest (01-01 Task 1)
 - [x] Create skills/stacks-dev directory structure (01-01 Task 2)
 - [x] Write initial SKILL.md with YAML frontmatter (01-01 Task 2)
 - [x] Create progressive disclosure directories (01-01 Task 3)
 - [x] Validate with `skills-ref validate` (01-02 Task 2)
 - [x] Test loading with `--plugin-dir` flag (01-02 Task 3)
-- [x] Phase 1 complete - All validation passing
+
+**Completed (Phase 2):**
+- [x] Create clarity-design.md reference file (02-01 Task 1)
+- [x] Create clarity-tdd.md reference file (02-01 Task 2)
+- [x] Create clarity-cli.md reference file (02-01 Task 3)
+- [x] Create clarity-frontend.md reference file (02-01 Task 4)
 
 **Upcoming (Phase 2):**
-- [ ] Design progressive disclosure structure (core instructions vs. references/)
-- [ ] Write workflow orchestration instructions
-- [ ] Create verification steps for self-checking
+- [ ] Write SKILL.md workflow orchestration with 5 phases (02-02)
+- [ ] Add phase gates and verification steps (02-02)
+- [ ] Link reference files from workflow phases (02-02)
 
 **Future Phases:**
 - [ ] Design phase guidance (Phase 3)
@@ -133,18 +142,18 @@ None currently.
 
 ## Session Continuity
 
-**Last session:** 2026-01-29 18:59:08 UTC
-**Stopped at:** Completed 01-02-PLAN.md (Phase 1 complete)
+**Last session:** 2026-01-29 19:45:00 UTC
+**Stopped at:** Completed 02-01-PLAN.md
 **Resume file:** None
 
 **To Resume Work:**
 1. Read this STATE.md for current position
-2. Check ROADMAP.md for phase structure and success criteria
-3. Begin Phase 2: Skill Core Structure
+2. Execute 02-02-PLAN.md for SKILL.md workflow orchestration
+3. Complete Phase 2 after 02-02
 
 **If Context is Lost:**
 - Core context preserved in: PROJECT.md, REQUIREMENTS.md, ROADMAP.md, STATE.md
-- Research context in: research/SUMMARY.md
+- Research context in: research/SUMMARY.md, phases/02-core-skill-structure/02-RESEARCH.md
 - All files in .planning/ directory
 
 **Quick Status Check:**
@@ -157,4 +166,4 @@ cat .planning/ROADMAP.md | grep "Status"
 
 *State initialized: 2026-01-29*
 *Last updated: 2026-01-29*
-*Next action: `/gsd:discuss-phase 2` or `/gsd:plan-phase 2`*
+*Next action: Execute 02-02-PLAN.md*
