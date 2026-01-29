@@ -1,92 +1,95 @@
 # Stacks.js Frontend Integration
 
-## Contents
+Quick reference for @stacks/connect v8+ and contract interactions with React.
 
-- [Stacks.js Overview](#stacksjs-overview)
-- [Wallet Integration](#wallet-integration)
-- [Contract Calls](#contract-calls)
-- [Network Configuration](#network-configuration)
-- [React Patterns](#react-patterns)
-- [External References](#external-references)
-
-## Stacks.js Overview
-
-| Package | Purpose |
-|---------|---------|
-| `@stacks/connect` | Wallet connection and authentication |
-| `@stacks/transactions` | Build and send transactions |
-| `@stacks/network` | Network configuration |
+## Setup
 
 ```bash
 npm install @stacks/connect @stacks/transactions @stacks/network
 ```
 
-## Wallet Integration
-
-### Connect Wallet
+## Wallet Integration (v8+ API)
 
 ```typescript
-import { showConnect, AppConfig, UserSession } from "@stacks/connect";
+import { connect, disconnect, isConnected, getLocalStorage } from "@stacks/connect";
 
-const appConfig = new AppConfig(["store_write"]);
-const userSession = new UserSession({ appConfig });
+// Connect
+const response = await connect();
+const data = getLocalStorage();
+const address = data?.stxAddress;
 
-function connectWallet() {
-  showConnect({
-    appDetails: { name: "My Stacks App", icon: "/logo.png" },
-    onFinish: () => {
-      const userData = userSession.loadUserData();
-      console.log("Connected:", userData.profile.stxAddress);
-    },
-    userSession,
-  });
-}
-```
+// Check connection
+if (isConnected()) { /* ... */ }
 
-### Check and Disconnect
-
-```typescript
-const isAuthenticated = () => userSession.isUserSignedIn();
-const disconnect = () => userSession.signUserOut();
+// Disconnect
+disconnect();
 ```
 
 ## Contract Calls
 
-### Read-Only Calls (No Signing)
+### Read-Only
 
 ```typescript
-import { callReadOnlyFunction, cvToValue, principalCV } from "@stacks/transactions";
-import { StacksMainnet } from "@stacks/network";
+import { fetchCallReadOnlyFunction, cvToValue, Cl } from "@stacks/transactions";
 
-async function getBalance(address: string): Promise<number> {
-  const result = await callReadOnlyFunction({
-    contractAddress: "SP...",
-    contractName: "my-token",
-    functionName: "get-balance",
-    functionArgs: [principalCV(address)],
-    network: new StacksMainnet(),
-    senderAddress: address,
-  });
-  return cvToValue(result).value;
-}
+const result = await fetchCallReadOnlyFunction({
+  contractAddress: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
+  contractName: "my-token",
+  functionName: "get-balance",
+  functionArgs: [Cl.principal(address)],
+  network: getNetwork(),
+  senderAddress: address,
+  validateWithAbi: true,
+});
+return cvToValue(result).value;
 ```
 
-### Contract Calls (With Signing)
+### Write (With Signing)
 
 ```typescript
 import { openContractCall } from "@stacks/connect";
-import { uintCV, principalCV } from "@stacks/transactions";
 
-async function transfer(amount: number, recipient: string) {
-  await openContractCall({
-    contractAddress: "SP...",
-    contractName: "my-token",
-    functionName: "transfer",
-    functionArgs: [uintCV(amount), principalCV(recipient)],
-    onFinish: (data) => console.log("TX ID:", data.txId),
-    onCancel: () => console.log("Cancelled"),
-  });
-}
+await openContractCall({
+  contractAddress: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
+  contractName: "my-token",
+  functionName: "transfer",
+  functionArgs: [Cl.uint(amount), Cl.principal(recipient), Cl.none()],
+  onFinish: (data) => console.log("TX:", data.txId),
+});
+```
+
+## Post-Conditions (CRITICAL)
+
+Always include post-conditions for STX/token operations to protect users.
+
+```typescript
+import { Pc, PostConditionMode } from "@stacks/transactions";
+
+await openContractCall({
+  // ... contract details ...
+  postConditions: [
+    Pc.principal(senderAddress)
+      .willSendEq(amount)
+      .ft('ST1...contract.token', 'token-name')
+  ],
+  postConditionMode: PostConditionMode.Deny, // ALWAYS use Deny
+});
+```
+
+### Common Patterns
+
+```typescript
+// STX
+Pc.principal(address).willSendEq(1000000).ustx()
+
+// Fungible tokens
+Pc.principal(address).willSendEq(100).ft('SP...contract', 'token-name')
+
+// NFT
+Pc.principal(address).willSendAsset().nft('SP...contract::nft', Cl.uint(tokenId))
+
+// Receive (sender sends <= 0)
+Pc.principal(address).willSendLte(0).ft('SP...contract', 'token')
 ```
 
 ## Network Configuration
@@ -94,12 +97,36 @@ async function transfer(amount: number, recipient: string) {
 ```typescript
 import { StacksMainnet, StacksTestnet, StacksDevnet } from "@stacks/network";
 
-function getNetwork() {
-  switch (process.env.NEXT_PUBLIC_NETWORK) {
+export function getNetwork() {
+  switch (process.env.NEXT_PUBLIC_STACKS_NETWORK) {
     case "mainnet": return new StacksMainnet();
     case "testnet": return new StacksTestnet();
-    default: return new StacksDevnet();
+    default: return new StacksDevnet({ url: 'http://localhost:20443' });
   }
+}
+```
+
+## Transaction Status Polling
+
+`onFinish` fires on BROADCAST, not confirmation. Poll for actual status:
+
+```typescript
+async function pollTransactionStatus(txId: string): Promise<string> {
+  const maxAttempts = 30;
+  const interval = 2000; // 2 seconds
+
+  for (let i = 0; i < maxAttempts; i++) {
+    const res = await fetch(`https://api.devnet.hiro.so/extended/v1/tx/${txId}`);
+    const tx = await res.json();
+
+    if (tx.tx_status === 'success') return 'success';
+    if (tx.tx_status === 'abort_by_response' || tx.tx_status === 'abort_by_post_condition') {
+      return 'failed';
+    }
+
+    await new Promise(r => setTimeout(r, interval));
+  }
+  return 'timeout';
 }
 ```
 
@@ -109,20 +136,26 @@ function getNetwork() {
 
 ```typescript
 import { createContext, useContext, useState, useEffect } from "react";
+import { connect, disconnect, isConnected, getLocalStorage } from "@stacks/connect";
 
-const AuthContext = createContext({ address: null, connect: () => {}, disconnect: () => {} });
+const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [address, setAddress] = useState(null);
 
   useEffect(() => {
-    if (userSession.isUserSignedIn()) {
-      setAddress(userSession.loadUserData().profile.stxAddress.mainnet);
+    if (isConnected()) {
+      setAddress(getLocalStorage()?.stxAddress || null);
     }
   }, []);
 
+  const handleConnect = async () => {
+    await connect();
+    setAddress(getLocalStorage()?.stxAddress || null);
+  };
+
   return (
-    <AuthContext.Provider value={{ address, connect: connectWallet, disconnect }}>
+    <AuthContext.Provider value={{ address, connect: handleConnect, disconnect: () => { disconnect(); setAddress(null); } }}>
       {children}
     </AuthContext.Provider>
   );
@@ -134,7 +167,10 @@ export const useAuth = () => useContext(AuthContext);
 ### Contract Call Hook
 
 ```typescript
-function useContractCall() {
+import { useState } from "react";
+import { openContractCall } from "@stacks/connect";
+
+export function useContractCall() {
   const [loading, setLoading] = useState(false);
   const [txId, setTxId] = useState(null);
 
@@ -142,23 +178,22 @@ function useContractCall() {
     setLoading(true);
     await openContractCall({
       ...options,
+      network: getNetwork(),
       onFinish: (data) => { setTxId(data.txId); setLoading(false); },
       onCancel: () => setLoading(false),
     });
   }
+
   return { call, loading, txId };
 }
 ```
 
 ## External References
 
-### Stacks.js Documentation
-- [Stacks.js Overview](https://docs.stacks.co/stacks-js/overview)
-- [@stacks/connect](https://docs.stacks.co/stacks-js/connect)
-- [@stacks/transactions](https://docs.stacks.co/stacks-js/transactions)
-
-### Examples
-- [Stacks.js Packages](https://github.com/hirosystems/stacks.js/tree/main/packages)
+- [Connect Wallet](https://docs.stacks.co/stacks-connect/connect-wallet)
+- [@stacks/transactions](https://docs.stacks.co/reference/stacks.js/stacks-transactions)
+- [Post-Conditions](https://docs.stacks.co/post-conditions/implementation)
+- [Stacks.js Starters](https://github.com/hirosystems/stacks.js-starters)
 
 ---
 
