@@ -51,6 +51,13 @@ Plans:
 
 **Dependencies:** Phase 1 (plugin foundation must exist)
 
+**Plans:** 3 plans
+
+Plans:
+- [x] 02-01-PLAN.md - Create reference files for progressive disclosure (clarity-design.md, clarity-tdd.md, clarity-cli.md, clarity-frontend.md)
+- [x] 02-02-PLAN.md - Write SKILL.md workflow orchestration with 5 phases, gates, and verification steps
+- [x] 02-03-PLAN.md - Validate complete skill structure and test auto-invocation
+
 **Requirements:**
 - SKIL-01: Single `stacks-dev` skill with valid SKILL.md and YAML frontmatter
 - SKIL-02: Skill description triggers auto-loading when user mentions Stacks, Clarity, or Clarinet
@@ -164,7 +171,7 @@ Plans:
 | Phase | Status | Requirements | Completed |
 |-------|--------|--------------|-----------|
 | 1 - Plugin Foundation & Compliance | ✓ Complete | 11 | 11/11 |
-| 2 - Core Skill Structure | Pending | 8 | 0/8 |
+| 2 - Core Skill Structure | ✓ Complete | 8 | 8/8 |
 | 3 - Design & Planning Phase | Pending | 4 | 0/4 |
 | 4 - TDD Workflow & Contract Implementation | Pending | 8 | 0/8 |
 | 5 - Clarinet CLI Integration | Pending | 5 | 0/5 |
@@ -189,4 +196,4 @@ If the single skill proves insufficient (context window issues, exceeds 500 line
 
 ---
 
-*Last updated: 2026-01-29 (Phase 1 complete)*
+*Last updated: 2026-01-29 (Phase 2 complete)*

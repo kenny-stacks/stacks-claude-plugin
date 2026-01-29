@@ -26,11 +26,11 @@ Requirements for initial release. Single `stacks-dev` skill covering full workfl
 
 ### Skill Structure
 
-- [ ] **SKIL-01**: Single `stacks-dev` skill with valid SKILL.md and YAML frontmatter
-- [ ] **SKIL-02**: Skill description triggers auto-loading when user mentions Stacks, Clarity, or Clarinet
-- [ ] **SKIL-03**: Skill body stays under 500 lines (use supporting files for reference material)
-- [ ] **SKIL-04**: Skill uses progressive disclosure (reference files loaded on-demand)
-- [ ] **SKIL-05**: File references are one level deep (no nested reference chains)
+- [x] **SKIL-01**: Single `stacks-dev` skill with valid SKILL.md and YAML frontmatter
+- [x] **SKIL-02**: Skill description triggers auto-loading when user mentions Stacks, Clarity, or Clarinet
+- [x] **SKIL-03**: Skill body stays under 500 lines (use supporting files for reference material)
+- [x] **SKIL-04**: Skill uses progressive disclosure (reference files loaded on-demand)
+- [x] **SKIL-05**: File references are one level deep (no nested reference chains)
 
 ### Design Phase
 
@@ -70,9 +70,9 @@ Requirements for initial release. Single `stacks-dev` skill covering full workfl
 
 ### Quality & Verification
 
-- [ ] **QUAL-01**: Skill includes verification steps so Claude can self-check work
-- [ ] **QUAL-02**: Skill declares required tools in frontmatter (allowed-tools)
-- [ ] **QUAL-03**: Skill provides clear phase transitions (design → tests → contract → coverage → frontend)
+- [x] **QUAL-01**: Skill includes verification steps so Claude can self-check work
+- [x] **QUAL-02**: Skill declares required tools in frontmatter (allowed-tools)
+- [x] **QUAL-03**: Skill provides clear phase transitions (design → tests → contract → coverage → frontend)
 
 ## v2 Requirements
 
@@ -126,14 +126,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SPEC-06 | Phase 1 | Complete |
 | SPEC-07 | Phase 1 | Complete |
 | SPEC-08 | Phase 1 | Complete |
-| SKIL-01 | Phase 2 | Pending |
-| SKIL-02 | Phase 2 | Pending |
-| SKIL-03 | Phase 2 | Pending |
-| SKIL-04 | Phase 2 | Pending |
-| SKIL-05 | Phase 2 | Pending |
-| QUAL-01 | Phase 2 | Pending |
-| QUAL-02 | Phase 2 | Pending |
-| QUAL-03 | Phase 2 | Pending |
+| SKIL-01 | Phase 2 | Complete |
+| SKIL-02 | Phase 2 | Complete |
+| SKIL-03 | Phase 2 | Complete |
+| SKIL-04 | Phase 2 | Complete |
+| SKIL-05 | Phase 2 | Complete |
+| QUAL-01 | Phase 2 | Complete |
+| QUAL-02 | Phase 2 | Complete |
+| QUAL-03 | Phase 2 | Complete |
 | DSGN-01 | Phase 3 | Pending |
 | DSGN-02 | Phase 3 | Pending |
 | DSGN-03 | Phase 3 | Pending |
@@ -163,4 +163,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-29*
-*Last updated: 2026-01-29 after roadmap creation*
+*Last updated: 2026-01-29 after Phase 2 completion*
