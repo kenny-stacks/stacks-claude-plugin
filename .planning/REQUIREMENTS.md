@@ -41,17 +41,17 @@ Requirements for initial release. Single `stacks-dev` skill covering full workfl
 
 ### TDD Workflow
 
-- [ ] **TEST-01**: Skill enforces tests-first workflow (write tests before contract implementation)
-- [ ] **TEST-02**: Skill guides writing unit tests using Clarinet SDK
-- [ ] **TEST-03**: Skill validates test coverage using Clarinet coverage tools
-- [ ] **TEST-04**: Skill enforces 90%+ coverage gate before proceeding to frontend
+- [x] **TEST-01**: Skill enforces tests-first workflow (write tests before contract implementation)
+- [x] **TEST-02**: Skill guides writing unit tests using Clarinet SDK
+- [x] **TEST-03**: Skill validates test coverage using Clarinet coverage tools
+- [x] **TEST-04**: Skill enforces 90%+ coverage gate before proceeding to frontend
 
 ### Contract Implementation
 
-- [ ] **CONT-01**: Skill guides writing Clarity contracts following best practices
-- [ ] **CONT-02**: Skill applies coding style patterns (no unnecessary begin, meaningful errors, asserts over nested ifs)
-- [ ] **CONT-03**: Skill applies storage patterns (hash storage, minimize on-chain data)
-- [ ] **CONT-04**: Skill applies upgradability patterns (modular architecture, dynamic principals)
+- [x] **CONT-01**: Skill guides writing Clarity contracts following best practices
+- [x] **CONT-02**: Skill applies coding style patterns (no unnecessary begin, meaningful errors, asserts over nested ifs)
+- [x] **CONT-03**: Skill applies storage patterns (hash storage, minimize on-chain data)
+- [x] **CONT-04**: Skill applies upgradability patterns (modular architecture, dynamic principals)
 
 ### Clarinet CLI
 
@@ -138,14 +138,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DSGN-02 | Phase 3 | Complete |
 | DSGN-03 | Phase 3 | Complete |
 | DSGN-04 | Phase 3 | Complete |
-| TEST-01 | Phase 4 | Pending |
-| TEST-02 | Phase 4 | Pending |
-| TEST-03 | Phase 4 | Pending |
-| TEST-04 | Phase 4 | Pending |
-| CONT-01 | Phase 4 | Pending |
-| CONT-02 | Phase 4 | Pending |
-| CONT-03 | Phase 4 | Pending |
-| CONT-04 | Phase 4 | Pending |
+| TEST-01 | Phase 4 | Complete |
+| TEST-02 | Phase 4 | Complete |
+| TEST-03 | Phase 4 | Complete |
+| TEST-04 | Phase 4 | Complete |
+| CONT-01 | Phase 4 | Complete |
+| CONT-02 | Phase 4 | Complete |
+| CONT-03 | Phase 4 | Complete |
+| CONT-04 | Phase 4 | Complete |
 | CLAR-01 | Phase 5 | Pending |
 | CLAR-02 | Phase 5 | Pending |
 | CLAR-03 | Phase 5 | Pending |
@@ -163,4 +163,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-29*
-*Last updated: 2026-01-29 after Phase 3 completion*
+*Last updated: 2026-01-29 after Phase 4 completion*
