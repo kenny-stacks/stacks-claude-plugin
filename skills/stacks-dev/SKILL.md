@@ -258,6 +258,7 @@ When all tests pass, we proceed automatically to Phase 4.
 ---
 
 ## Phase 4/5: Verification
+**TDD Status:** [✓ followed | ⚠ skipped - 95% coverage required]
 
 **Purpose:** Ensure quality through coverage and security review.
 
@@ -265,11 +266,12 @@ When all tests pass, we proceed automatically to Phase 4.
 
 1. **Run Coverage Analysis**
    ```bash
-   clarinet test --coverage
+   npm run test:coverage
    ```
+   Uses Vitest with Clarinet SDK for coverage reporting.
 
 2. **Verify Coverage Threshold**
-   - Target: 90%+ line coverage
+   - Target: 90%+ line coverage (95% if TDD skipped)
    - Identify any uncovered functions
 
 3. **Security Review**
@@ -284,12 +286,49 @@ When all tests pass, we proceed automatically to Phase 4.
 
 **Reference:** For coverage commands, see [references/clarity-cli.md](references/clarity-cli.md)
 
+### Coverage Display
+
+After every test run, I'll show coverage status:
+
+```
+Coverage: 87% (target: 90%)
+├── Lines: 87%
+├── Functions: 100%
+├── Branches: 75%
+└── Statements: 88%
+
+Uncovered:
+- transfer() line 45: zero-amount validation branch
+- admin-set-fee() lines 67-70: entire function
+```
+
+### Coverage Gap Analysis
+
+When below 90%, I'll identify specific gaps and suggest tests:
+
+"Line 45 is the zero-amount check in transfer().
+Suggested test: 'should reject transfer with zero amount → ERR-INVALID-AMOUNT'"
+
+Accept suggestions or provide your own test scenarios.
+
+### Coverage Gate Override
+
+**Standard threshold:** 90%
+
+If coverage is below 90% and you want to proceed anyway:
+- Say "proceed anyway" or "skip coverage gate"
+- I'll note the override and continue to Phase 5
+- No justification required
+
+**If TDD was skipped:** Threshold increases to 95%
+
 ### Verification (Automatic)
 
 I will verify:
-- [ ] Coverage >= 90%
+- [ ] Coverage >= 90% (or 95% if TDD skipped)
 - [ ] All functions tested
-- [ ] No obvious security issues
+- [ ] Uncovered lines identified with suggested tests
+- [ ] Security review completed
 
 ### Auto-Fix Loop
 
@@ -442,7 +481,7 @@ clarinet console                # Interactive REPL
 
 # Testing
 clarinet test                   # Run all tests
-clarinet test --coverage        # With coverage report
+npm run test:coverage           # With coverage report (Vitest)
 
 # Deployment
 clarinet devnet start           # Local blockchain
