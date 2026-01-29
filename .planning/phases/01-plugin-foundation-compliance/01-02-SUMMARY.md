@@ -122,7 +122,7 @@ None - plan executed exactly as written. Validation passed on first attempt.
 ## User Setup Required
 
 **For manual verification (documented in TESTING.md):**
-1. Install plugin: `claude plugins add /Users/kenny/Code/stacks-skills`
+1. Load plugin: `claude --plugin-dir /Users/kenny/Code/stacks-skills`
 2. Verify in Claude Code session:
    - Type `/help` to see skill in menu
    - Type "I want to build a Clarity contract" to test auto-activation
@@ -133,7 +133,7 @@ None - plan executed exactly as written. Validation passed on first attempt.
 **Phase 1 Complete:**
 - ✅ PLUG-01: Plugin manifest exists at .claude-plugin/plugin.json
 - ✅ PLUG-02: Plugin structure follows Agent Skills spec
-- ✅ PLUG-03: Plugin installable via `claude plugins add`
+- ✅ PLUG-03: Plugin loadable via `--plugin-dir` flag for testing
 - ✅ SPEC-01: name field matches directory name (stacks-dev)
 - ✅ SPEC-02: name field is lowercase with hyphens
 - ✅ SPEC-03: name field under 64 characters
