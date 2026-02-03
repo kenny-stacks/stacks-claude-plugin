@@ -50,21 +50,26 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FUZZ-01 | — | Pending |
-| FUZZ-02 | — | Pending |
-| FUZZ-03 | — | Pending |
-| FUZZ-04 | — | Pending |
-| FUZZ-05 | — | Pending |
-| FUZZ-06 | — | Pending |
-| FUZZ-07 | — | Pending |
-| TRIG-01 | — | Pending |
-| TRIG-02 | — | Pending |
+| FUZZ-01 | Phase 7, Phase 9 | Pending |
+| FUZZ-02 | Phase 9 | Pending |
+| FUZZ-03 | Phase 9 | Pending |
+| FUZZ-04 | Phase 9 | Pending |
+| FUZZ-05 | Phase 9 | Pending |
+| FUZZ-06 | Phase 9 | Pending |
+| FUZZ-07 | Phase 8 | Pending |
+| TRIG-01 | Phase 10 | Pending |
+| TRIG-02 | Phase 10 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 9 total
-- Mapped to phases: 0
-- Unmapped: 9 (pending roadmap)
+- Mapped to phases: 9
+- Unmapped: 0 (100% coverage)
+
+**Coverage Notes:**
+- FUZZ-01 spans Phase 7 (installation foundation) and Phase 9 (workflow guidance)
+- All other requirements map to exactly one phase
+- Phase 11 (Testing & Validation) validates all requirements but is not primary delivery phase
 
 ---
 *Requirements defined: 2026-02-03*
-*Last updated: 2026-02-03 after initial definition*
+*Last updated: 2026-02-03 after roadmap creation*
