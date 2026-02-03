@@ -55,7 +55,17 @@ Enable developers to build high-quality Clarity smart contracts through enforced
 
 ### Active
 
-(None -- v1.0 complete, define new requirements for v2 with `/gsd:new-milestone`)
+- [ ] FUZZ-01: Rendezvous fuzz testing integration
+- [ ] TRIG-01: Expanded trigger keywords for broader auto-invocation
+
+## Current Milestone: v1.1 Fuzz Testing & Trigger Expansion
+
+**Goal:** Add property-based fuzz testing with Rendezvous and improve skill auto-invocation coverage.
+
+**Target features:**
+- Rendezvous fuzz testing workflow integrated into TDD phases
+- Expanded skill description keywords for broader trigger matching
+- Documentation for property-based testing patterns
 
 ### Out of Scope
 
@@ -105,4 +115,4 @@ Enable developers to build high-quality Clarity smart contracts through enforced
 | v8+ @stacks/connect | Modern API patterns only | Good -- avoids deprecated patterns |
 
 ---
-*Last updated: 2026-01-29 after v1.0 milestone*
+*Last updated: 2026-02-03 after v1.1 milestone start*
