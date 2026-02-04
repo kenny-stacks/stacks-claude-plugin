@@ -1,7 +1,7 @@
 ---
 name: plugin-help
 description: Display Stacks plugin capabilities, available commands, and example prompts. Use when user runs /stacks:help or asks about plugin features.
-license: Apache-2.0
+license: MIT
 metadata:
   author: "Stacks Skills Contributors"
   version: "1.0.0"
@@ -30,11 +30,14 @@ Enhances Claude for developing Clarity smart contracts on the Stacks blockchain.
 | `/stacks:init` | Initialize the plugin for your project. Copies knowledge files and optionally starts dev servers. |
 | `/stacks:help` | Show this help information. |
 | `/stacks:expert-advice` | Get expert review of your Clarity contracts against best practices and security patterns. |
+| `/stacks:update-docs` | Refresh the documentation index to get latest Stacks doc paths. |
 
 ### Available Skills
 
 | Skill | When It Activates |
 |-------|-------------------|
+| **run-tests** | When you want to run tests, check coverage, or debug test failures. |
+| **deploy-contract** | When you want to deploy contracts to testnet or mainnet. |
 | **start-dev-server** | When you want to start Clarinet devnet and frontend servers for local development. |
 | **plugin-help** | When you ask about plugin capabilities or run `/stacks:help`. |
 
@@ -56,9 +59,14 @@ Enhances Claude for developing Clarity smart contracts on the Stacks blockchain.
 - "Optimize my contract storage"
 
 **Testing:**
-- "Run the tests"
+- "Run the tests" → Invokes run-tests skill
 - "Check test coverage"
-- "Add tests for the mint function"
+- "Why is toBeOk not a function?"
+
+**Deployment:**
+- "Deploy my contract to testnet" → Invokes deploy-contract skill
+- "Deploy to mainnet"
+- "What are the deployment steps?"
 
 **Frontend Integration:**
 - "Connect the wallet to my app"
@@ -77,7 +85,6 @@ Enhances Claude for developing Clarity smart contracts on the Stacks blockchain.
 clarinet new my-project      # Create new project
 clarinet contract new token  # Add contract
 clarinet check               # Validate contracts
-clarinet test                # Run tests
 clarinet console             # Interactive REPL
 clarinet devnet start        # Start local blockchain
 ```
@@ -91,14 +98,15 @@ npm run test:watch     # Watch mode
 
 ### Plugin Features
 
-- **Knowledge Integration**: Comprehensive Clarity/Stacks best practices loaded into context
+- **Live Documentation**: Fetches current Stacks docs before writing code to avoid outdated patterns
 - **Chrome DevTools MCP**: Browser console access for frontend debugging
 - **SessionStart Hook**: Automatic detection of uninitialized Stacks projects
 - **Expert Review**: Contract analysis against Clarity Book best practices
+- **Test Diagnosis**: Automatic diagnosis of common test failures
 
 ### Documentation
 
-For the latest Stacks documentation, I can fetch from: `https://docs.stacks.co/llms.txt`
+For the latest Stacks documentation, I can fetch from: `https://docs.stacks.co`
 
 ### Getting Help
 
@@ -109,4 +117,4 @@ For the latest Stacks documentation, I can fetch from: `https://docs.stacks.co/l
 
 ---
 
-*Stacks Plugin v1.0.0 | Apache-2.0 | [Report Issues](https://github.com/stacks-skills/stacks-skills/issues)*
+*Stacks Plugin v1.0.0 | MIT | [Report Issues](https://github.com/kenny-stacks/stacks-claude-plugin/issues)*

@@ -3,12 +3,19 @@
   "owner": {
     "name": "Stacks Skills Contributors"
   },
+  "metadata": {
+    "description": "Claude Code plugin for Stacks blockchain and Clarity smart contract development"
+  },
   "plugins": [
     {
       "name": "stacks",
       "source": ".",
       "description": "Enhances Claude for developing Clarity smart contracts on the Stacks blockchain",
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "homepage": "https://github.com/kenny-stacks/stacks-claude-plugin",
+      "repository": "https://github.com/kenny-stacks/stacks-claude-plugin",
+      "license": "MIT",
+      "keywords": ["stacks", "clarity", "blockchain", "smart-contracts", "clarinet", "bitcoin"]
     }
   ]
 }

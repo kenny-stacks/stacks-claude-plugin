@@ -1,7 +1,7 @@
 ---
 name: deploy-contract
 description: Guide deployment of Clarity contracts to testnet or mainnet with pre-flight checks and safety prompts. Use when the user wants to deploy contracts to a live network.
-license: Apache-2.0
+license: MIT
 metadata:
   author: "Stacks Skills Contributors"
   version: "1.0.0"

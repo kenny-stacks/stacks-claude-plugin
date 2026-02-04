@@ -1,7 +1,7 @@
 ---
 name: run-tests
 description: Run Clarity contract tests and diagnose common errors. Use when the user wants to run tests, check coverage, or debug test failures in a Stacks/Clarinet project.
-license: Apache-2.0
+license: MIT
 metadata:
   author: "Stacks Skills Contributors"
   version: "1.0.0"

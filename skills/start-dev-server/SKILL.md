@@ -1,7 +1,7 @@
 ---
 name: start-dev-server
 description: Start Clarinet devnet and frontend development servers. Use when the user wants to run their Stacks project locally for testing and development.
-license: Apache-2.0
+license: MIT
 metadata:
   author: "Stacks Skills Contributors"
   version: "1.0.0"
