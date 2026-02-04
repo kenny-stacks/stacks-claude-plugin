@@ -54,7 +54,7 @@ Which do you prefer?"
 
 **If background tasks:**
 ```bash
-clarinet devnet start
+clarinet devnet start --no-dashboard
 ```
 Run this in background mode. Monitor the output for:
 - "Stacks node is ready" or similar startup confirmation
@@ -64,7 +64,7 @@ Run this in background mode. Monitor the output for:
 Tell the user:
 "In a new terminal window, run:
 ```
-clarinet devnet start
+clarinet devnet start --no-dashboard
 ```
 Keep this terminal open during development. Let me know when you see the node is ready."
 
