@@ -1,0 +1,14 @@
+{
+  "name": "stacks-claude-plugin",
+  "owner": {
+    "name": "Stacks Skills Contributors"
+  },
+  "plugins": [
+    {
+      "name": "stacks",
+      "source": ".",
+      "description": "Enhances Claude for developing Clarity smart contracts on the Stacks blockchain",
+      "version": "1.0.0"
+    }
+  ]
+}

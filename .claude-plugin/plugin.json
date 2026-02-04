@@ -1,9 +1,11 @@
 {
-  "name": "stacks-skills",
-  "description": "Claude Code plugin for Stacks blockchain development with enforced TDD workflow",
-  "version": "0.1.0",
-  "author": {
-    "name": "Stacks Skills Contributors"
-  },
-  "license": "Apache-2.0"
+  "name": "stacks",
+  "version": "1.0.0",
+  "description": "Enhances Claude for developing Clarity smart contracts on the Stacks blockchain",
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    }
+  }
 }
