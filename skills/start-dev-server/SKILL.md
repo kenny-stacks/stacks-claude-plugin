@@ -10,6 +10,7 @@ allowed-tools:
   - Bash
   - Glob
   - Grep
+  - AskUserQuestion
 ---
 
 # Start Dev Server Skill
@@ -130,16 +131,26 @@ Common frontend ports to check:
 curl -s -o /dev/null -w "%{http_code}" http://localhost:5173 || curl -s -o /dev/null -w "%{http_code}" http://localhost:3000
 ```
 
-### Step 7: Setup Browser Console Access
+### Step 7: Connect Browser Console Access (Important!)
 
-Tell the user:
-"For full debugging visibility, you can connect browser console access. This lets me see client-side errors, React issues, and network requests.
+**This step is critical for effective development and debugging.** Without browser console access, Claude cannot see client-side errors, warnings, or React issues that occur in the browser.
 
-**Options:**
-1. **Chrome DevTools MCP** (Recommended) - The plugin includes Chrome DevTools MCP configuration. Open Chrome DevTools and I can access console output.
-2. **Manual** - Copy/paste relevant console output when debugging issues.
+Use the AskUserQuestion tool to ask the user which method they'd like to use for giving Claude visibility into the browser console:
 
-The Chrome DevTools MCP is already configured in this plugin's `plugin.json`. Just open DevTools in your browser while developing."
+| Option | Description |
+|--------|-------------|
+| **Chrome DevTools MCP (Recommended)** | Use the `mcp__plugin_stacks_chrome-devtools` tool bundled with this plugin. Open Chrome DevTools in your browser and Claude gains visibility into console logs, network requests, and runtime errors. |
+| **Built-in Browser** | Use Claude Code's built-in browser connection (check status with `/browser` command) |
+| **Manual** | User will manually copy/paste console output when needed |
+
+If the user selects **Chrome DevTools MCP**:
+1. Confirm the MCP server is available (it's configured in the plugin's `plugin.json`)
+2. Instruct the user to open their app in Chrome and open DevTools (F12 or Cmd+Option+I)
+3. Explain that Claude can now see console output, network requests, and errors
+
+If the user selects **Manual**:
+- Let them know they can paste console output anytime during debugging
+- Remind them this option requires more back-and-forth but gives them full control
 
 ### Step 8: Summary
 
