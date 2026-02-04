@@ -13,7 +13,7 @@ Run the plugin's `start-dev-server` skill with the recommended options to give C
 ### Documentation
 
 > **REQUIRED: Before writing ANY Clarity code, modifying contracts, or building frontend integrations, you MUST:**
-> 1. Check the live docs index at `~/.claude/cache/stacks-docs-index.json` (refreshed each session)
+> 1. Check the docs index at `.claude/stacks/docs-index.json`
 > 2. Identify which documentation pages are relevant to your task
 > 3. Fetch those pages from `https://docs.stacks.co{path}`
 > 4. Only then proceed with implementation
@@ -22,7 +22,7 @@ Run the plugin's `start-dev-server` skill with the recommended options to give C
 
 The **Documentation Index** below is a fallback reference. For the latest index (including newly added pages), read:
 ```
-~/.claude/cache/stacks-docs-index.json
+.claude/stacks/docs-index.json
 ```
 
 To fetch a doc, construct URLs as: `https://docs.stacks.co{path}`

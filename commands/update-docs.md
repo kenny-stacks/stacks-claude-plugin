@@ -26,35 +26,13 @@ Parse the output to extract all documentation paths. The format is:
 
 ### Step 2: Update JSON Cache
 
-Update the JSON docs index at `~/.claude/cache/stacks-docs-index.json`:
+Update the JSON docs index at `.claude/stacks/docs-index.json`:
 
 ```bash
-mkdir -p ~/.claude/cache
+mkdir -p .claude/stacks && curl -s "https://docs.stacks.co/llms.txt" | grep -E '^\s*-\s*\[' | grep -v '/zh/\|/es/' | sed 's/.*\[\([^]]*\)\](\([^)]*\)).*/{"title":"\1","path":"\2"}/' | jq -s '{lastUpdated:"'"$(date +%Y-%m-%d)"'",source:"https://docs.stacks.co/llms.txt",docs:.}' > .claude/stacks/docs-index.json
 ```
 
-Write the JSON file with this structure:
-```json
-{
-  "lastUpdated": "YYYY-MM-DD",
-  "source": "https://docs.stacks.co/llms.txt",
-  "docs": [
-    { "title": "Developer Quickstart", "path": "/get-started/developer-quickstart.md", "category": "build" }
-  ]
-}
-```
-
-Categorize paths as:
-- `build` - `/get-started/*`
-- `clarinet` - `/clarinet/*`
-- `stacksjs` - `/stacks.js/*`
-- `connect` - `/stacks-connect/*`
-- `postconditions` - `/post-conditions/*`
-- `reference` - `/reference/*`
-- `cookbook` - `/cookbook/*`
-- `sbtc` - `/more-guides/sbtc/*` and `/learn/sbtc/*`
-- `other` - Everything else
-
-Filter out non-English docs (skip paths containing `/zh/` or `/es/`).
+If `jq` is not installed, tell the user to install it (`brew install jq`) or create the JSON file manually.
 
 ### Step 3: Read Current Knowledge File
 
@@ -114,7 +92,7 @@ Documentation index updated!
 **Total Paths:** {count of documentation paths}
 
 Updated:
-- ~/.claude/cache/stacks-docs-index.json (JSON cache for fast lookups)
+- .claude/stacks/docs-index.json (JSON index for fast lookups)
 - .claude/stacks/knowledge/general-stacks-knowledge.md (embedded index)
 ```
 

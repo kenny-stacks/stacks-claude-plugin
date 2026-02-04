@@ -21,41 +21,13 @@ Wait for user confirmation before continuing.
 
 ### Step 1: Create Documentation Index
 
-Fetch the latest documentation index and save it as JSON for fast lookups:
+Fetch the latest documentation index and save it as JSON. Run this command:
 
 ```bash
-mkdir -p ~/.claude/cache
+mkdir -p .claude/stacks && curl -s "https://docs.stacks.co/llms.txt" | grep -E '^\s*-\s*\[' | grep -v '/zh/\|/es/' | sed 's/.*\[\([^]]*\)\](\([^)]*\)).*/{"title":"\1","path":"\2"}/' | jq -s '{lastUpdated:"'"$(date +%Y-%m-%d)"'",source:"https://docs.stacks.co/llms.txt",docs:.}' > .claude/stacks/docs-index.json
 ```
 
-Fetch the docs index:
-```bash
-curl -s "https://docs.stacks.co/llms.txt"
-```
-
-Parse the output and create a JSON file at `~/.claude/cache/stacks-docs-index.json` with this structure:
-```json
-{
-  "lastUpdated": "YYYY-MM-DD",
-  "source": "https://docs.stacks.co/llms.txt",
-  "docs": [
-    { "title": "Developer Quickstart", "path": "/get-started/developer-quickstart.md", "category": "build" },
-    { "title": "Clarity Functions", "path": "/reference/clarity/functions.md", "category": "reference" }
-  ]
-}
-```
-
-Categorize paths as:
-- `build` - `/get-started/*`
-- `clarinet` - `/clarinet/*`
-- `stacksjs` - `/stacks.js/*`
-- `connect` - `/stacks-connect/*`
-- `postconditions` - `/post-conditions/*`
-- `reference` - `/reference/*`
-- `cookbook` - `/cookbook/*`
-- `sbtc` - `/more-guides/sbtc/*` and `/learn/sbtc/*`
-- `other` - Everything else
-
-Filter out non-English docs (skip paths containing `/zh/` or `/es/`).
+If `jq` is not installed, tell the user to install it (`brew install jq`) or create the JSON file manually by reading the curl output and writing the JSON structure.
 
 ### Step 2: Copy Knowledge File
 
