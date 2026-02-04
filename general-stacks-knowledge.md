@@ -18,7 +18,7 @@ Fetch docs from `https://docs.stacks.co{path}` before writing Clarity code or in
 
 ### Clarity Version
 
-**Always check `Clarinet.toml` for the project's epoch/Clarity version before writing contracts.** Never downgrade - if the project uses `epoch = "3.0"` (Clarity 4), keep it. Clarity 4 introduced new features like native string support. Your training data may contain Clarity 2/3 patterns - verify against the project config.
+**Always check `Clarinet.toml` for the project's `clarity_version` and `epoch` before writing contracts.** Never downgrade versions. Use whatever Clarity version is defined in the Clarinet.toml file.
 
 ### Contract Compilation
 
@@ -29,11 +29,11 @@ clarinet check
 
 ### Testing
 
-**Unit tests**: Use Clarinet SDK + Vitest. Fetch `/clarinet/testing-with-clarinet-sdk.md` for patterns.
+**Unit tests**: Use Clarinet SDK + Vitest.
 
-**Fuzz testing**: Use Rendezvous (`@stacks/rendezvous`) for property-based testing. Finds edge cases unit tests miss. Fetch `/rendezvous/quickstart.md` for setup and patterns.
+**Fuzz testing**: Use Rendezvous (`@stacks/rendezvous`) for property-based testing to find edge cases.
 
-Both testing approaches should be used before deployment.
+Use both approaches before deployment.
 
 ## Project Reference
 
