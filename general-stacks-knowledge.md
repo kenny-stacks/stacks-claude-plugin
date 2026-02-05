@@ -16,7 +16,7 @@ Run the plugin's `start-dev-server` skill with the recommended options to give C
 
 ### sBTC
 
-**Do NOT create mock sBTC tokens.** sBTC is included with Clarinet devnet out of the box. Fetch the sBTC docs (`/clarinet/integrations/sbtc.md` or `/learn/sbtc/`) to see how to use the real devnet sBTC contracts.
+**Do NOT create mock sBTC tokens.** sBTC is included with Clarinet devnet out of the box. Fetch `/clarinet/integrations/sbtc.md` to see how to use the real devnet sBTC contracts.
 
 ### Clarity Version
 
